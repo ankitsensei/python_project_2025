@@ -17,6 +17,5 @@ def botRandomCard():
     print(botTotalCard)
     print(botCardSum)
     
-    
 botRandomCard()
 

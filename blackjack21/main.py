@@ -10,7 +10,7 @@ totalAmount = 2500
 def botRandomCard():
     global cards
     
-    randomCard = random.choice(cards)
+    randomCard = random.choice()
     
     botTotalCard = []
     botSumCard = 0
