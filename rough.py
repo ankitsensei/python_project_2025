@@ -17,12 +17,12 @@ def playerRandomCard():
         if ask == "y":
             playerTotalCard.append(random.choice(cards))
         else:
+            askAgain = False      
+        if playerCardSum >=21:
+            playerThings = [playerTotalCard, playerCardSum]
+        else:
+            playerThings = [playerTotalCard, [0]]
             askAgain = False
-            
-    if playerCardSum >=21:
-        playerThings = [playerTotalCard, playerCardSum]
-    else:
-        playerThings = [playerTotalCard, [0]]
     return playerThings
 
 print(playerRandomCard())
