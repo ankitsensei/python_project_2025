@@ -11,7 +11,7 @@ def botRandomCard():
     global cards
     
     botTotalCard = []
-    botSumCard = 0
+    botCardSum = 0
     
     while botCardSum < 16:
         # Bot taking more card
@@ -19,8 +19,28 @@ def botRandomCard():
         botCardSum = 0
         for i in botTotalCard:
             botCardSum += i
-    print(botTotalCard)
-    print(botCardSum)
+        botThings = [botTotalCard, botCardSum]
+        return botThings
+
+def playerRandomCard():
+    playerTotalCard = []
+    playerCardSum = 0
+    askAgain = True
+    while askAgain:
+        for i in range(2):
+            playerTotalCard.append(random.choice(cards))
+        for i in playerTotalCard:
+            playerCardSum += i
+        print(f"Your cards are: {playerTotalCard}")
+        print(f"Your sum of Cards are: {playerCardSum}")
+        ask = input("Want to grab another card too? 🤔  [y/n]: ").lower()
+        if ask != "y":
+            askAgain = False
+    if playerCardSum >=21:
+        playerThings = [playerTotalCard, playerCardSum]
+    else:
+        playerThings = [0]
+    return playerThings
 
 def deal():
     global totalAmount
