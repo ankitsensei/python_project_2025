@@ -10,12 +10,11 @@ def botRandomCard():
     
     while botCardSum < 16:
         # take more card
-        randomCard = random.choice(cards)
-        botTotalCard.append(randomCard)
+        botTotalCard.append(random.choice(cards))
+        botCardSum = 0
         for i in botTotalCard:
-            botCardSum += 1
+            botCardSum += i
     print(botTotalCard)
     print(botCardSum)
-    
 botRandomCard()
 

@@ -10,17 +10,17 @@ totalAmount = 2500
 def botRandomCard():
     global cards
     
-    randomCard = random.choice()
-    
     botTotalCard = []
     botSumCard = 0
     
-    for i in botTotalCard:
-        botSumCard +=i
-        
-    if botSumCard > 16:
-        # take more card
-        
+    while botCardSum < 16:
+        # Bot taking more card
+        botTotalCard.append(random.choice(cards))
+        botCardSum = 0
+        for i in botTotalCard:
+            botCardSum += i
+    print(botTotalCard)
+    print(botCardSum)
 
 def deal():
     global totalAmount
