@@ -29,6 +29,7 @@ def playerRandomCard():
     for i in range(2):
         playerTotalCard.append(random.choice(cards))
     while askAgain:
+        playerCardSum = 0
         for i in playerTotalCard:
             playerCardSum += i
         print(f"👉 You have cards => {playerTotalCard}")
@@ -49,30 +50,29 @@ def deal():
     
     while True:
         betAmount = int(input(f"Enter bet amount from  Rs.{totalAmount}: "))
-        print(f"Looks like you have enough money to gamble 🤩")
-        botRandomThings = botRandomCard()
-        playerRandomThings = playerRandomCard()
-        print(f"🔴 Bot has cards => {botRandomThings[0]}")
-        print(f"🟢 Your sum of cards => {botRandomThings[1]}")
-        print()
-        print(f"🟢 You have cards => {playerRandomThings[0]}")
-        print(f"🟢 Your sum of cards => {playerRandomThings[1]}")
-        if botRandomThings[1] > 21:
-            print("Bot's card sum is more than 21. That's why you WON. 😁")
+        if betAmount > totalAmount:
+            print("You don't have enough Rs. to play 🥹")
             break
-        elif playerRandomThings[1] > 21:
-            print("Your's card sum is more than 21. That's why you LOSE. 🥹")
-            break
-        elif botRandomThings[1] > playerRandomThings[1]:
-            print("YOU LOST 🥹")
-        elif botRandomThings[1] < playerRandomThings[1]:
-            print("YOU WON 😁")
-        if betAmount <= 0:
-            print("Such a poor guy. You LOST buddy 😭")
-            break
-    else:
-        print("You don't have enough Rs. to play 🥹")
-
+        else:
+            print(f"Looks like you have enough money to gamble 🤩")
+            botRandomThings = botRandomCard()
+            playerRandomThings = playerRandomCard()
+            print(f"🔴 Bot has cards => {botRandomThings[0]}")
+            print(f"🟢 Bot's sum of cards => {botRandomThings[1]}")
+            print()
+            if botRandomThings[1] > 21:
+                print("Bot's card sum is more than 21. That's why you WON. 😁")
+                break
+            elif playerRandomThings[1] > 21:
+                print("Your's card sum is more than 21. That's why you LOSE. 🥹")
+                break
+            elif botRandomThings[1] > playerRandomThings[1]:
+                print("YOU LOST 🥹")
+            elif botRandomThings[1] < playerRandomThings[1]:
+                print("YOU WON 😁")
+            if betAmount <= 0:
+                print("Such a poor guy. You LOST buddy 😭")
+                break
 deal()
 
 
