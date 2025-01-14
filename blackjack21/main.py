@@ -58,7 +58,7 @@ def deal():
             botRandomThings = botRandomCard()
             playerRandomThings = playerRandomCard()
             print(f"🔴 Bot has cards => {botRandomThings[0]}")
-            print(f"🟢 Bot's sum of cards => {botRandomThings[1]}")
+            print(f"🔴 Bot's sum of cards => {botRandomThings[1]}")
             print()
             if botRandomThings[1] > 21:
                 print("Bot's card sum is more than 21. That's why you WON. 😁")
