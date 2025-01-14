@@ -62,15 +62,21 @@ def deal():
             print()
             if botRandomThings[1] > 21:
                 print("Bot's card sum is more than 21. That's why you WON. 😁")
-                break
+                totalAmount += betAmount
+                print(f"Now, you have Rs.{totalAmount}")
             elif playerRandomThings[1] > 21:
                 print("Your's card sum is more than 21. That's why you LOSE. 🥹")
-                break
+                totalAmount -= betAmount
+                print(f"Now, you have Rs.{totalAmount} left.")
             elif botRandomThings[1] > playerRandomThings[1]:
                 print("YOU LOST 🥹")
+                totalAmount -= betAmount
+                print(f"Now, you have Rs.{totalAmount} left.")
             elif botRandomThings[1] < playerRandomThings[1]:
                 print("YOU WON 😁")
-            if betAmount <= 0:
+                totalAmount += betAmount
+                print(f"Now, you have Rs.{totalAmount}")
+            if totalAmount <= 0:
                 print("Such a poor guy. You LOST buddy 😭")
                 break
 deal()
