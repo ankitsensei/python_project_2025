@@ -1,12 +1,21 @@
 import art
 import random
+import os
+import platform
 print(art.blackjack)
 
 cards = [1,2,3,4,5,6,7,8,9,10,11]
 totalAmount = 2500
+score = 0
 
 
-
+def clear_terminal():
+    if platform.system() == "windows":
+        os.system("cls")
+    else:
+        os.system("clear")
+        
+        
 def botRandomCard():
     global cards
     
@@ -32,8 +41,9 @@ def playerRandomCard():
         playerCardSum = 0
         for i in playerTotalCard:
             playerCardSum += i
-        print(f"👉 You have cards => {playerTotalCard}")
-        print(f"👉 Your sum of cards => {playerCardSum}")
+        clear_terminal()
+        print(f"🟢 You have cards => {playerTotalCard}")
+        print(f"🟢 Your sum of cards => {playerCardSum}")
         if playerCardSum > 21:
             break
         ask = input("Want to grab another card too? 🤔  [y/n]: ").lower()
@@ -46,9 +56,11 @@ def playerRandomCard():
 
 def deal():
     global totalAmount
-    
+    global score
     
     while True:
+        if score < totalAmount:
+            score += totalAmount
         betAmount = int(input(f"Enter bet amount from  Rs.{totalAmount}: "))
         if betAmount > totalAmount:
             print("You don't have enough Rs. to play 🥹")
@@ -78,6 +90,7 @@ def deal():
                 print(f"Now, you have Rs.{totalAmount}")
             if totalAmount <= 0:
                 print("Such a poor guy. You LOST buddy 😭")
+                print(f"Your score is: {score}")
                 break
 deal()
 
